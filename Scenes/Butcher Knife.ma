@@ -1,9 +1,11 @@
 //Maya ASCII 2027 scene
 //Name: Butcher Knife.ma
-//Last modified: Wed, Sep 16, 2026 11:12:21 AM
+//Last modified: Wed, Sep 23, 2026 11:12:57 AM
 //Codeset: 1252
 requires maya "2027";
 requires -nodeType "polyBoolean" "polyBoolean" "1.1";
+requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" -nodeType "aiAreaLight"
+		 -nodeType "aiNormalMap" -nodeType "aiImagerDenoiserOidn" "mtoa" "5.6.1.1";
 requires "mtoa" "5.6.1.1";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
@@ -11,18 +13,18 @@ fileInfo "product" "Maya 2027";
 fileInfo "version" "2027";
 fileInfo "cutIdentifier" "202604221258-70da84b25e";
 fileInfo "osv" "Windows 11 Enterprise v2009 (Build: 26200)";
-fileInfo "UUID" "AC0C9C47-4B66-87DC-3F9D-92BB0206325A";
+fileInfo "UUID" "772E6C9A-4F2C-8AB5-83CE-93A04FF295D6";
 fileInfo "license" "education";
 createNode transform -s -n "persp";
 	rename -uid "6E5B16E7-4570-7C39-3FB4-2A9EA7AEC3A7";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 16.425684600872906 10.516371938887943 28.999924706914062 ;
-	setAttr ".r" -type "double3" -12.338352778738214 25.399999999999217 0 ;
+	setAttr ".t" -type "double3" 14.533924713980566 8.0123231057174138 37.294632070072971 ;
+	setAttr ".r" -type "double3" -12.338352778684259 379.79999999974024 0 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "7E3F22B6-4BB6-3422-80AF-9C93568143E2";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 38.453298822165294;
+	setAttr ".coi" 50.998561607922319;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -9609,16 +9611,72 @@ createNode mesh -n "pCubeShape1" -p "pCube1";
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
+createNode transform -n "aiAreaLight1";
+	rename -uid "879663D0-45CE-97BC-44E4-5089B484B6C8";
+	setAttr ".t" -type "double3" -53.356958163224157 21.925025220333197 -61.643421881849321 ;
+	setAttr ".r" -type "double3" -11.494291267119616 217.00486735482295 0 ;
+	setAttr ".s" -type "double3" 3.7839797708967162 21.387805758503262 12.995402274023911 ;
+createNode aiAreaLight -n "aiAreaLightShape1" -p "aiAreaLight1";
+	rename -uid "666FE84D-4537-A57E-6AD6-FDB59A342212";
+	addAttr -ci true -h true -sn "aal" -ln "attributeAliasList" -dt "attributeAlias";
+	setAttr -k off ".v";
+	setAttr ".csh" no;
+	setAttr ".rcsh" no;
+	setAttr ".ai_exposure" 15;
+	setAttr ".ai_translator" -type "string" "quad";
+	setAttr ".aal" -type "attributeAlias" 4 "exposure" "aiExposure" "normalize" "aiNormalize" ;
+createNode transform -n "aiAreaLight2";
+	rename -uid "D1F14B65-4828-AA3C-7651-23A592FBB854";
+	setAttr ".t" -type "double3" -26.355067762683788 8.2276057317400717 37.25115436936597 ;
+	setAttr ".r" -type "double3" -10.924557620089763 -15.16398640034086 9.5250055742301942 ;
+	setAttr ".s" -type "double3" 12.195541724637485 12.195541724637485 12.195541724637485 ;
+createNode aiAreaLight -n "aiAreaLightShape2" -p "aiAreaLight2";
+	rename -uid "29407FCA-4B3E-8C59-9FA2-868B46234BAD";
+	addAttr -ci true -h true -sn "aal" -ln "attributeAliasList" -dt "attributeAlias";
+	setAttr -k off ".v";
+	setAttr ".csh" no;
+	setAttr ".rcsh" no;
+	setAttr ".ai_exposure" 10;
+	setAttr ".ai_translator" -type "string" "quad";
+	setAttr ".aal" -type "attributeAlias" 4 "exposure" "aiExposure" "normalize" "aiNormalize" ;
+createNode transform -n "aiAreaLight3";
+	rename -uid "D36CBF8D-4387-B963-BAD7-548CA103367D";
+	setAttr ".t" -type "double3" 38.607187217900126 8.7931305811733811 -36.910738777954322 ;
+	setAttr ".r" -type "double3" 0 124.20905699716566 0 ;
+	setAttr ".s" -type "double3" 43.909534905171441 14.091014428988183 14.091014428988183 ;
+createNode aiAreaLight -n "aiAreaLightShape3" -p "aiAreaLight3";
+	rename -uid "749F0D0B-4AF4-AD22-108E-E59CDC381B41";
+	addAttr -ci true -h true -sn "aal" -ln "attributeAliasList" -dt "attributeAlias";
+	setAttr -k off ".v";
+	setAttr ".csh" no;
+	setAttr ".rcsh" no;
+	setAttr ".ai_exposure" 15;
+	setAttr ".ai_translator" -type "string" "quad";
+	setAttr ".aal" -type "attributeAlias" 4 "exposure" "aiExposure" "normalize" "aiNormalize" ;
+createNode transform -n "pCube2";
+	rename -uid "ABAB914B-424D-552F-0884-1CB2E74FE46B";
+	setAttr ".t" -type "double3" 0 -6.3498468893638913 0 ;
+	setAttr ".s" -type "double3" 1265.8898635701223 -2.1436025904727245 1265.8898635701223 ;
+createNode mesh -n "pCubeShape2" -p "pCube2";
+	rename -uid "AAC7D59C-4462-476F-134C-018945B0949F";
+	setAttr -k off ".v";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "B737CF6C-4172-A4D2-6F69-90A52F9E0ACF";
+	rename -uid "EA77EC67-49D9-9587-A905-BD9BB1958D2D";
 	setAttr -s 3 ".lnk";
 	setAttr -s 3 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "B0769AE4-45A1-055C-51B7-84A3C175DA89";
+	rename -uid "51E01E9B-4988-9D03-A182-55B86F8D9FC4";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "4C4C5174-45AE-B1DE-88D2-DB81456E2470";
+	rename -uid "A11FB7B7-49F8-A130-D49B-DDBCBBE673C6";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "469C6A77-4CEA-84D6-229F-BD9B99D7CE21";
+	rename -uid "9F654F44-47B3-0839-2A5E-778CD90B5274";
 	setAttr ".cdl" 3;
 	setAttr -s 4 ".dli[1:3]"  1 2 3;
 	setAttr -s 3 ".dli";
@@ -9626,7 +9684,7 @@ createNode displayLayer -n "defaultLayer";
 	rename -uid "DAE6EC3C-42F5-1409-EEBA-C69DEC285144";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "E06DB529-48C4-EAFD-BC57-06B615626E75";
+	rename -uid "A12DB6F4-4CEC-364E-FD33-50B850B67070";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "61761E9F-4ACA-5D9F-BEC6-259983C90493";
 	setAttr ".g" yes;
@@ -9651,7 +9709,7 @@ createNode script -n "uiConfigurationScriptNode";
 		+ "            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1\n            -height 1\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            -pluginObjects \"mayaUsdProxyShapeBaseDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Persp View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n"
 		+ "\t\tmodelPanel -edit -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|persp\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n"
 		+ "            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n"
-		+ "            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1234\n            -height 706\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n"
+		+ "            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 733\n            -height 523\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n"
 		+ "        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            -pluginObjects \"mayaUsdProxyShapeBaseDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"ToggledOutliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"ToggledOutliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n            -showReferenceNodes 1\n            -showReferenceMembers 1\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n            -showDagOnly 1\n"
 		+ "            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showParentContainers 0\n            -showContainerContents 1\n            -ignoreDagHierarchy 0\n            -expandConnections 0\n            -showUpstreamCurves 1\n            -showUnitlessCurves 1\n            -showCompounds 1\n            -showLeafs 1\n            -showNumericAttrsOnly 0\n            -highlightActive 1\n            -autoSelectNewObjects 0\n            -doNotSelectNewObjects 0\n            -dropIsParent 1\n            -transmitFilters 0\n            -setFilter \"defaultSetFilter\" \n            -showSetMembers 1\n            -allowMultiSelection 1\n            -alwaysToggleSelect 0\n            -directSelect 0\n            -isSet 0\n            -isSetMember 0\n            -showUfeItems 1\n            -displayMode \"DAG\" \n            -expandObjects 0\n            -setsIgnoreFilters 1\n            -containersIgnoreFilters 0\n            -editAttrName 0\n            -showAttrValues 0\n            -highlightSecondary 0\n"
 		+ "            -showUVAttrsOnly 0\n            -showTextureNodesOnly 0\n            -attrAlphaOrder \"default\" \n            -animLayerFilterOptions \"allAffecting\" \n            -sortOrder \"none\" \n            -longNames 0\n            -niceNames 1\n            -showNamespace 1\n            -showPinIcons 0\n            -mapMotionTrails 0\n            -ignoreHiddenAttribute 0\n            -ignoreOutlinerColor 0\n            -renderFilterVisible 0\n            -renderFilterIndex 0\n            -selectionOrder \"chronological\" \n            -expandAttribute 0\n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"Outliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"Outliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n"
@@ -9675,8 +9733,8 @@ createNode script -n "uiConfigurationScriptNode";
 		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Reference Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynPaintScriptedPanelType\" (localizedPanelLabel(\"Paint Effects\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Paint Effects\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"scriptEditorPanel\" (localizedPanelLabel(\"Script Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Script Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"profilerPanel\" (localizedPanelLabel(\"Profiler Tool\")) `;\n"
 		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Profiler Tool\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"motionMakerEditorPanel\" (localizedPanelLabel(\"MotionMaker Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"MotionMaker Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"contentBrowserPanel\" (localizedPanelLabel(\"Content Browser\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Content Browser\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n"
 		+ "        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
-		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1234\\n    -height 706\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    -pluginObjects \\\"mayaUsdProxyShapeBaseDisplayFilter\\\" 1 \\n    $editorName\"\n"
-		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1234\\n    -height 706\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    -pluginObjects \\\"mayaUsdProxyShapeBaseDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 733\\n    -height 523\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    -pluginObjects \\\"mayaUsdProxyShapeBaseDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 733\\n    -height 523\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    -pluginObjects \\\"mayaUsdProxyShapeBaseDisplayFilter\\\" 1 \\n    $editorName\"\n"
 		+ "\t\t\t\t$configName;\n\n            setNamedPanelLayout (localizedPanelLabel(\"Current Layout\"));\n        }\n\n        panelHistory -e -clear mainPanelHistory;\n        sceneUIReplacement -clear;\n\t}\n\n\ngrid -spacing 5 -size 12 -divisions 5 -displayAxes yes -displayGridLines yes -displayDivisionLines yes -displayPerspectiveLabels no -displayOrthographicLabels no -displayAxesBold yes -perspectiveLabelPosition axis -orthographicLabelPosition edge;\nviewManip -drawCompass 0 -compassAngle 0 -frontParameters \"\" -homeParameters \"\" -selectionLockParameters \"\";\n}\n");
 	setAttr ".st" 3;
 createNode script -n "sceneConfigurationScriptNode";
@@ -9746,18 +9804,139 @@ createNode shadingEngine -n "openPBRSurface1SG";
 	setAttr ".ro" yes;
 createNode materialInfo -n "materialInfo1";
 	rename -uid "2606041B-44FE-F567-8366-318C8D1C58D2";
+	setAttr -s 3 ".t";
+createNode file -n "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_1";
+	rename -uid "CBE2BE00-4B25-74CB-1805-0A81A61F711D";
+	setAttr ".ftn" -type "string" "C:/Users/11094931/Documents/GitHub/UVU-AGD-Portfolio//Textures/Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic.png";
+	setAttr ".cs" -type "string" "sRGB Encoded Rec.709 (sRGB)";
+createNode place2dTexture -n "place2dTexture1";
+	rename -uid "1480582B-422F-14AC-78C7-6B8C4908F7B8";
+createNode file -n "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_1";
+	rename -uid "8D2C1AD6-420B-0DE5-2B8F-67A6193283C5";
+	setAttr ".ftn" -type "string" "C:/Users/11094931/Documents/GitHub/UVU-AGD-Portfolio//Textures/Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal.png";
+	setAttr ".cs" -type "string" "sRGB Encoded Rec.709 (sRGB)";
+createNode place2dTexture -n "place2dTexture2";
+	rename -uid "84FF9030-4A43-FD80-0700-2E836147756D";
+createNode file -n "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_1";
+	rename -uid "54A409CF-4560-EE12-9CB4-57891B92DA0A";
+	setAttr ".ftn" -type "string" "C:/Users/11094931/Documents/GitHub/UVU-AGD-Portfolio//Textures/Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness.png";
+	setAttr ".cs" -type "string" "sRGB Encoded Rec.709 (sRGB)";
+createNode place2dTexture -n "place2dTexture3";
+	rename -uid "023600E6-4193-3119-3827-71A11FC8DC29";
+createNode file -n "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_1";
+	rename -uid "234701D4-49BD-A154-D55A-15A3128D7693";
+	setAttr ".ftn" -type "string" "C:/Users/11094931/Documents/GitHub/UVU-AGD-Portfolio//Textures/Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor.png";
+	setAttr ".cs" -type "string" "sRGB Encoded Rec.709 (sRGB)";
+createNode place2dTexture -n "place2dTexture4";
+	rename -uid "A30F1C1C-400F-6166-28D6-619C399034F1";
+createNode file -n "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_1";
+	rename -uid "570DB0F1-4068-D5B8-0F25-BF9D1B70183D";
+	setAttr ".ftn" -type "string" "C:/Users/11094931/Documents/GitHub/UVU-AGD-Portfolio//Textures/Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height.png";
+	setAttr ".cs" -type "string" "sRGB Encoded Rec.709 (sRGB)";
+createNode place2dTexture -n "place2dTexture5";
+	rename -uid "C32E796C-41C8-670F-ED19-DBBD10E1CD29";
+createNode aiOptions -s -n "defaultArnoldRenderOptions";
+	rename -uid "416A2DAC-4A19-583E-7F54-3DA7C0AA573A";
+	addAttr -ci true -sn "ARV_options" -ln "ARV_options" -dt "string";
+	setAttr ".version" -type "string" "5.6.1.1";
+	setAttr ".ARV_options" -type "string" "Test Resolution=100%;Camera=perspShape;Color Management.Gamma=1;Color Management.Exposure=0;Background.BG=BG Color;Background.Color=0 0 0;Background.Image=;Background.Scale=1 1;Background.Offset=0 0;Background.Apply Color Management=1;Foreground.Enable FG=0;Foreground.Image=;Foreground.Scale=1 1;Foreground.Offset=0 0;Foreground.Apply Color Management=1;Interactive.FPS=16";
+createNode aiAOVFilter -s -n "defaultArnoldFilter";
+	rename -uid "5A02582C-4B9B-F374-815E-0D996294AD29";
+	setAttr ".ai_translator" -type "string" "gaussian";
+createNode aiAOVDriver -s -n "defaultArnoldDriver";
+	rename -uid "A97CBEA0-4246-8F92-7237-04A9DCEE104D";
+	setAttr ".ai_translator" -type "string" "exr";
+createNode aiAOVDriver -s -n "defaultArnoldDisplayDriver";
+	rename -uid "E6074DA9-42D0-7CD8-D254-4CA2EFB4B069";
+	setAttr ".ai_translator" -type "string" "maya";
+	setAttr ".output_mode" 0;
+createNode aiImagerDenoiserOidn -s -n "defaultArnoldDenoiser";
+	rename -uid "21D24C5A-41C1-B3DA-6AE0-61ACCED5966A";
+createNode file -n "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2";
+	rename -uid "51865944-4ABA-3EAD-FF9E-74A774821F81";
+	setAttr ".ftn" -type "string" "C:/Users/11094931/Documents/GitHub/UVU-AGD-Portfolio//Textures/Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode place2dTexture -n "place2dTexture6";
+	rename -uid "EF0C0F4D-40DF-0C3D-AECA-99A117ADF2B3";
+createNode file -n "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2";
+	rename -uid "3250CC19-4780-9869-DC14-87BE3BD2A690";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "C:/Users/11094931/Documents/GitHub/UVU-AGD-Portfolio//Textures/Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode place2dTexture -n "place2dTexture7";
+	rename -uid "80997B80-4329-CA50-7414-6EB63BF7329D";
+createNode file -n "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2";
+	rename -uid "7C9433FA-4EA4-4729-F08B-B5ADAC3D40C9";
+	setAttr ".ftn" -type "string" "C:/Users/11094931/Documents/GitHub/UVU-AGD-Portfolio//Textures/Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor.png";
+	setAttr ".cs" -type "string" "sRGB Encoded Rec.709 (sRGB)";
+createNode place2dTexture -n "place2dTexture8";
+	rename -uid "A6FD9B75-42B2-0AC6-00BD-8FBCC0901126";
+createNode file -n "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_2";
+	rename -uid "E45D3054-4772-C107-2DFB-44B0DAE09628";
+	setAttr ".ftn" -type "string" "C:/Users/11094931/Documents/GitHub/UVU-AGD-Portfolio//Textures/Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height.png";
+	setAttr ".cs" -type "string" "sRGB Encoded Rec.709 (sRGB)";
+createNode place2dTexture -n "place2dTexture9";
+	rename -uid "B8A990EB-44A7-6ADB-1BC4-1E85E587B266";
+createNode file -n "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2";
+	rename -uid "5E9C0B4A-4094-4AF4-A24E-BD9B13499DCC";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "C:/Users/11094931/Documents/GitHub/UVU-AGD-Portfolio//Textures/Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic.png";
+	setAttr ".cs" -type "string" "Raw";
+createNode place2dTexture -n "place2dTexture10";
+	rename -uid "676AC5CA-4974-FE96-FE0A-3E8CC69BE9BD";
+createNode aiNormalMap -n "aiNormalMap1";
+	rename -uid "EE246594-4287-B05C-0092-F0BF6321ADA8";
 createNode nodeGraphEditorInfo -n "hyperShadePrimaryNodeEditorSavedTabsInfo";
-	rename -uid "274069DC-4228-82C2-A585-299E8FFC640C";
+	rename -uid "A8A083F4-4493-F019-66B0-D59BCE2A188B";
 	setAttr ".tgi[0].tn" -type "string" "Untitled_1";
-	setAttr ".tgi[0].vl" -type "double2" 233.76661098557182 -883.60338874689091 ;
-	setAttr ".tgi[0].vh" -type "double2" 1336.147519561842 -291.93674559094461 ;
-	setAttr -s 2 ".tgi[0].ni";
-	setAttr ".tgi[0].ni[0].x" 565.02593994140625;
-	setAttr ".tgi[0].ni[0].y" -438.79257202148438;
-	setAttr ".tgi[0].ni[0].nvs" 1971;
-	setAttr ".tgi[0].ni[1].x" 800;
-	setAttr ".tgi[0].ni[1].y" -440.47616577148438;
+	setAttr ".tgi[0].vl" -type "double2" -901.99399137731939 -673.54846272135489 ;
+	setAttr ".tgi[0].vh" -type "double2" 231.63903112092581 64.873047346309377 ;
+	setAttr -s 14 ".tgi[0].ni";
+	setAttr ".tgi[0].ni[0].x" -397.83740234375;
+	setAttr ".tgi[0].ni[0].y" -207.10321044921875;
+	setAttr ".tgi[0].ni[0].nvs" 1923;
+	setAttr ".tgi[0].ni[1].x" -606.7899169921875;
+	setAttr ".tgi[0].ni[1].y" 152.53759765625;
 	setAttr ".tgi[0].ni[1].nvs" 1923;
+	setAttr ".tgi[0].ni[2].x" -706.84954833984375;
+	setAttr ".tgi[0].ni[2].y" -367.619384765625;
+	setAttr ".tgi[0].ni[2].nvs" 1923;
+	setAttr ".tgi[0].ni[3].x" -619.2659912109375;
+	setAttr ".tgi[0].ni[3].y" -207.10321044921875;
+	setAttr ".tgi[0].ni[3].nvs" 1923;
+	setAttr ".tgi[0].ni[4].x" -928.27813720703125;
+	setAttr ".tgi[0].ni[4].y" -367.619384765625;
+	setAttr ".tgi[0].ni[4].nvs" 1923;
+	setAttr ".tgi[0].ni[5].x" -420.7156982421875;
+	setAttr ".tgi[0].ni[5].y" -378.31521606445312;
+	setAttr ".tgi[0].ni[5].nvs" 1923;
+	setAttr ".tgi[0].ni[6].x" -708.52410888671875;
+	setAttr ".tgi[0].ni[6].y" -591.2596435546875;
+	setAttr ".tgi[0].ni[6].nvs" 1923;
+	setAttr ".tgi[0].ni[7].x" -487.09555053710938;
+	setAttr ".tgi[0].ni[7].y" -591.2596435546875;
+	setAttr ".tgi[0].ni[7].nvs" 1923;
+	setAttr ".tgi[0].ni[8].x" -385.36135864257812;
+	setAttr ".tgi[0].ni[8].y" 152.53759765625;
+	setAttr ".tgi[0].ni[8].nvs" 1923;
+	setAttr ".tgi[0].ni[9].x" -631.210205078125;
+	setAttr ".tgi[0].ni[9].y" -22.039562225341797;
+	setAttr ".tgi[0].ni[9].nvs" 1923;
+	setAttr ".tgi[0].ni[10].x" -409.7816162109375;
+	setAttr ".tgi[0].ni[10].y" -22.039562225341797;
+	setAttr ".tgi[0].ni[10].nvs" 1923;
+	setAttr ".tgi[0].ni[11].x" 149.57373046875;
+	setAttr ".tgi[0].ni[11].y" 269.7552490234375;
+	setAttr ".tgi[0].ni[11].nvs" 1923;
+	setAttr ".tgi[0].ni[12].x" 241.42857360839844;
+	setAttr ".tgi[0].ni[12].y" -4.2857141494750977;
+	setAttr ".tgi[0].ni[12].nvs" 1923;
+	setAttr ".tgi[0].ni[13].x" -70;
+	setAttr ".tgi[0].ni[13].y" -4.2857141494750977;
+	setAttr ".tgi[0].ni[13].nvs" 1971;
+createNode polyCube -n "polyCube1";
+	rename -uid "BB6F8AAF-4CC8-0E54-3049-0EB7B5B9F0BC";
+	setAttr ".cuv" 4;
 select -ne :time1;
 	setAttr ".o" 1;
 	setAttr ".unw" 1;
@@ -9775,7 +9954,13 @@ select -ne :defaultShaderList1;
 	setAttr -s 7 ".s";
 select -ne :postProcessList1;
 	setAttr -s 2 ".p";
+select -ne :defaultRenderUtilityList1;
+	setAttr -s 11 ".u";
 select -ne :defaultRenderingList1;
+select -ne :lightList1;
+	setAttr -s 3 ".l";
+select -ne :defaultTextureList1;
+	setAttr -s 10 ".tx";
 select -ne :standardSurface1;
 	setAttr ".bc" -type "float3" 0.40000001 0.40000001 0.40000001 ;
 	setAttr ".sr" 0.5;
@@ -9783,18 +9968,19 @@ select -ne :openPBR_shader1;
 	setAttr ".bc" -type "float3" 0.40000001 0.40000001 0.40000001 ;
 	setAttr ".sr" 0.5;
 select -ne :initialShadingGroup;
-	setAttr -s 19 ".dsm";
+	setAttr -s 20 ".dsm";
 	setAttr ".ro" yes;
 	setAttr -s 11 ".gn";
 select -ne :initialParticleSE;
 	setAttr ".ro" yes;
-select -ne :initialMaterialInfo;
 select -ne :defaultRenderGlobals;
 	addAttr -ci true -h true -sn "dss" -ln "defaultSurfaceShader" -dt "string";
 	setAttr ".ren" -type "string" "arnold";
 	setAttr ".dss" -type "string" "openPBR_shader1";
 select -ne :defaultResolution;
 	setAttr ".pa" 1;
+select -ne :defaultLightSet;
+	setAttr -s 3 ".dsm";
 select -ne :defaultColorMgtGlobals;
 	setAttr ".cfe" yes;
 	setAttr ".cfp" -type "string" "<MAYA_RESOURCES>/OCIO-configs/Maya2022-default/config.ocio";
@@ -9807,6 +9993,8 @@ select -ne :defaultColorMgtGlobals;
 select -ne :hardwareRenderGlobals;
 	setAttr ".ctrs" 256;
 	setAttr ".btrs" 512;
+select -ne :ikSystem;
+	setAttr -s 4 ".sol";
 connectAttr ":defaultColorMgtGlobals.cme" "imagePlaneShape1.cme";
 connectAttr ":defaultColorMgtGlobals.cfe" "imagePlaneShape1.cmcf";
 connectAttr ":defaultColorMgtGlobals.cfp" "imagePlaneShape1.cmcp";
@@ -9838,6 +10026,7 @@ connectAttr "groupId9.id" "HandleShape.iog.og[0].gid";
 connectAttr ":initialShadingGroup.mwc" "HandleShape.iog.og[0].gco";
 connectAttr "groupId10.id" "HandleShape.ciog.cog[0].cgid";
 connectAttr "layer1.di" "pCube1.do";
+connectAttr "polyCube1.out" "pCubeShape2.i";
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" "openPBRSurface1SG.message" ":defaultLightSet.message";
@@ -9858,18 +10047,530 @@ connectAttr "Rivet_MiddleShape.wm" "polyBoolean1.im[2]";
 connectAttr "Rivet_RightShape.wm" "polyBoolean1.im[3]";
 connectAttr "BladeShape1.wm" "polyBoolean1.im[4]";
 connectAttr "layerManager.dli[3]" "layer3.id";
+connectAttr "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2.oa" "Butcher_Knife_Mat.m"
+		;
+connectAttr "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2.oa" "Butcher_Knife_Mat.sr"
+		;
+connectAttr "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2.oc" "Butcher_Knife_Mat.bc"
+		;
+connectAttr "aiNormalMap1.out" "Butcher_Knife_Mat.n";
 connectAttr "Butcher_Knife_Mat.oc" "openPBRSurface1SG.ss";
 connectAttr "KleavorShape.iog" "openPBRSurface1SG.dsm" -na;
 connectAttr "openPBRSurface1SG.msg" "materialInfo1.sg";
 connectAttr "Butcher_Knife_Mat.msg" "materialInfo1.m";
-connectAttr "Butcher_Knife_Mat.msg" "materialInfo1.t" -na;
-connectAttr "Butcher_Knife_Mat.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[0].dn"
+connectAttr ":defaultColorMgtGlobals.cme" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_1.cme"
 		;
-connectAttr "openPBRSurface1SG.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[1].dn"
+connectAttr ":defaultColorMgtGlobals.cfe" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_1.cmcf"
+		;
+connectAttr ":defaultColorMgtGlobals.cfp" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_1.cmcp"
+		;
+connectAttr ":defaultColorMgtGlobals.wsn" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_1.ws"
+		;
+connectAttr "place2dTexture1.c" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_1.c"
+		;
+connectAttr "place2dTexture1.tf" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_1.tf"
+		;
+connectAttr "place2dTexture1.rf" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_1.rf"
+		;
+connectAttr "place2dTexture1.mu" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_1.mu"
+		;
+connectAttr "place2dTexture1.mv" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_1.mv"
+		;
+connectAttr "place2dTexture1.s" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_1.s"
+		;
+connectAttr "place2dTexture1.wu" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_1.wu"
+		;
+connectAttr "place2dTexture1.wv" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_1.wv"
+		;
+connectAttr "place2dTexture1.re" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_1.re"
+		;
+connectAttr "place2dTexture1.of" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_1.of"
+		;
+connectAttr "place2dTexture1.r" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_1.ro"
+		;
+connectAttr "place2dTexture1.n" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_1.n"
+		;
+connectAttr "place2dTexture1.vt1" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_1.vt1"
+		;
+connectAttr "place2dTexture1.vt2" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_1.vt2"
+		;
+connectAttr "place2dTexture1.vt3" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_1.vt3"
+		;
+connectAttr "place2dTexture1.vc1" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_1.vc1"
+		;
+connectAttr "place2dTexture1.o" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_1.uv"
+		;
+connectAttr "place2dTexture1.ofs" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_1.fs"
+		;
+connectAttr ":defaultColorMgtGlobals.cme" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_1.cme"
+		;
+connectAttr ":defaultColorMgtGlobals.cfe" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_1.cmcf"
+		;
+connectAttr ":defaultColorMgtGlobals.cfp" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_1.cmcp"
+		;
+connectAttr ":defaultColorMgtGlobals.wsn" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_1.ws"
+		;
+connectAttr "place2dTexture2.c" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_1.c"
+		;
+connectAttr "place2dTexture2.tf" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_1.tf"
+		;
+connectAttr "place2dTexture2.rf" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_1.rf"
+		;
+connectAttr "place2dTexture2.mu" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_1.mu"
+		;
+connectAttr "place2dTexture2.mv" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_1.mv"
+		;
+connectAttr "place2dTexture2.s" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_1.s"
+		;
+connectAttr "place2dTexture2.wu" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_1.wu"
+		;
+connectAttr "place2dTexture2.wv" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_1.wv"
+		;
+connectAttr "place2dTexture2.re" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_1.re"
+		;
+connectAttr "place2dTexture2.of" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_1.of"
+		;
+connectAttr "place2dTexture2.r" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_1.ro"
+		;
+connectAttr "place2dTexture2.n" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_1.n"
+		;
+connectAttr "place2dTexture2.vt1" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_1.vt1"
+		;
+connectAttr "place2dTexture2.vt2" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_1.vt2"
+		;
+connectAttr "place2dTexture2.vt3" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_1.vt3"
+		;
+connectAttr "place2dTexture2.vc1" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_1.vc1"
+		;
+connectAttr "place2dTexture2.o" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_1.uv"
+		;
+connectAttr "place2dTexture2.ofs" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_1.fs"
+		;
+connectAttr ":defaultColorMgtGlobals.cme" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_1.cme"
+		;
+connectAttr ":defaultColorMgtGlobals.cfe" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_1.cmcf"
+		;
+connectAttr ":defaultColorMgtGlobals.cfp" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_1.cmcp"
+		;
+connectAttr ":defaultColorMgtGlobals.wsn" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_1.ws"
+		;
+connectAttr "place2dTexture3.c" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_1.c"
+		;
+connectAttr "place2dTexture3.tf" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_1.tf"
+		;
+connectAttr "place2dTexture3.rf" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_1.rf"
+		;
+connectAttr "place2dTexture3.mu" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_1.mu"
+		;
+connectAttr "place2dTexture3.mv" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_1.mv"
+		;
+connectAttr "place2dTexture3.s" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_1.s"
+		;
+connectAttr "place2dTexture3.wu" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_1.wu"
+		;
+connectAttr "place2dTexture3.wv" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_1.wv"
+		;
+connectAttr "place2dTexture3.re" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_1.re"
+		;
+connectAttr "place2dTexture3.of" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_1.of"
+		;
+connectAttr "place2dTexture3.r" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_1.ro"
+		;
+connectAttr "place2dTexture3.n" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_1.n"
+		;
+connectAttr "place2dTexture3.vt1" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_1.vt1"
+		;
+connectAttr "place2dTexture3.vt2" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_1.vt2"
+		;
+connectAttr "place2dTexture3.vt3" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_1.vt3"
+		;
+connectAttr "place2dTexture3.vc1" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_1.vc1"
+		;
+connectAttr "place2dTexture3.o" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_1.uv"
+		;
+connectAttr "place2dTexture3.ofs" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_1.fs"
+		;
+connectAttr ":defaultColorMgtGlobals.cme" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_1.cme"
+		;
+connectAttr ":defaultColorMgtGlobals.cfe" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_1.cmcf"
+		;
+connectAttr ":defaultColorMgtGlobals.cfp" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_1.cmcp"
+		;
+connectAttr ":defaultColorMgtGlobals.wsn" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_1.ws"
+		;
+connectAttr "place2dTexture4.c" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_1.c"
+		;
+connectAttr "place2dTexture4.tf" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_1.tf"
+		;
+connectAttr "place2dTexture4.rf" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_1.rf"
+		;
+connectAttr "place2dTexture4.mu" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_1.mu"
+		;
+connectAttr "place2dTexture4.mv" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_1.mv"
+		;
+connectAttr "place2dTexture4.s" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_1.s"
+		;
+connectAttr "place2dTexture4.wu" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_1.wu"
+		;
+connectAttr "place2dTexture4.wv" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_1.wv"
+		;
+connectAttr "place2dTexture4.re" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_1.re"
+		;
+connectAttr "place2dTexture4.of" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_1.of"
+		;
+connectAttr "place2dTexture4.r" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_1.ro"
+		;
+connectAttr "place2dTexture4.n" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_1.n"
+		;
+connectAttr "place2dTexture4.vt1" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_1.vt1"
+		;
+connectAttr "place2dTexture4.vt2" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_1.vt2"
+		;
+connectAttr "place2dTexture4.vt3" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_1.vt3"
+		;
+connectAttr "place2dTexture4.vc1" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_1.vc1"
+		;
+connectAttr "place2dTexture4.o" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_1.uv"
+		;
+connectAttr "place2dTexture4.ofs" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_1.fs"
+		;
+connectAttr ":defaultColorMgtGlobals.cme" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_1.cme"
+		;
+connectAttr ":defaultColorMgtGlobals.cfe" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_1.cmcf"
+		;
+connectAttr ":defaultColorMgtGlobals.cfp" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_1.cmcp"
+		;
+connectAttr ":defaultColorMgtGlobals.wsn" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_1.ws"
+		;
+connectAttr "place2dTexture5.c" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_1.c"
+		;
+connectAttr "place2dTexture5.tf" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_1.tf"
+		;
+connectAttr "place2dTexture5.rf" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_1.rf"
+		;
+connectAttr "place2dTexture5.mu" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_1.mu"
+		;
+connectAttr "place2dTexture5.mv" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_1.mv"
+		;
+connectAttr "place2dTexture5.s" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_1.s"
+		;
+connectAttr "place2dTexture5.wu" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_1.wu"
+		;
+connectAttr "place2dTexture5.wv" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_1.wv"
+		;
+connectAttr "place2dTexture5.re" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_1.re"
+		;
+connectAttr "place2dTexture5.of" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_1.of"
+		;
+connectAttr "place2dTexture5.r" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_1.ro"
+		;
+connectAttr "place2dTexture5.n" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_1.n"
+		;
+connectAttr "place2dTexture5.vt1" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_1.vt1"
+		;
+connectAttr "place2dTexture5.vt2" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_1.vt2"
+		;
+connectAttr "place2dTexture5.vt3" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_1.vt3"
+		;
+connectAttr "place2dTexture5.vc1" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_1.vc1"
+		;
+connectAttr "place2dTexture5.o" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_1.uv"
+		;
+connectAttr "place2dTexture5.ofs" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_1.fs"
+		;
+connectAttr ":defaultArnoldDenoiser.msg" ":defaultArnoldRenderOptions.imagers" -na
+		;
+connectAttr ":defaultArnoldDisplayDriver.msg" ":defaultArnoldRenderOptions.drivers"
+		 -na;
+connectAttr ":defaultArnoldFilter.msg" ":defaultArnoldRenderOptions.filt";
+connectAttr ":defaultArnoldDriver.msg" ":defaultArnoldRenderOptions.drvr";
+connectAttr ":defaultColorMgtGlobals.cme" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2.cme"
+		;
+connectAttr ":defaultColorMgtGlobals.cfe" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2.cmcf"
+		;
+connectAttr ":defaultColorMgtGlobals.cfp" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2.cmcp"
+		;
+connectAttr ":defaultColorMgtGlobals.wsn" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2.ws"
+		;
+connectAttr "place2dTexture6.c" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2.c"
+		;
+connectAttr "place2dTexture6.tf" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2.tf"
+		;
+connectAttr "place2dTexture6.rf" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2.rf"
+		;
+connectAttr "place2dTexture6.mu" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2.mu"
+		;
+connectAttr "place2dTexture6.mv" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2.mv"
+		;
+connectAttr "place2dTexture6.s" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2.s"
+		;
+connectAttr "place2dTexture6.wu" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2.wu"
+		;
+connectAttr "place2dTexture6.wv" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2.wv"
+		;
+connectAttr "place2dTexture6.re" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2.re"
+		;
+connectAttr "place2dTexture6.of" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2.of"
+		;
+connectAttr "place2dTexture6.r" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2.ro"
+		;
+connectAttr "place2dTexture6.n" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2.n"
+		;
+connectAttr "place2dTexture6.vt1" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2.vt1"
+		;
+connectAttr "place2dTexture6.vt2" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2.vt2"
+		;
+connectAttr "place2dTexture6.vt3" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2.vt3"
+		;
+connectAttr "place2dTexture6.vc1" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2.vc1"
+		;
+connectAttr "place2dTexture6.o" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2.uv"
+		;
+connectAttr "place2dTexture6.ofs" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2.fs"
+		;
+connectAttr ":defaultColorMgtGlobals.cme" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2.cme"
+		;
+connectAttr ":defaultColorMgtGlobals.cfe" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2.cmcf"
+		;
+connectAttr ":defaultColorMgtGlobals.cfp" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2.cmcp"
+		;
+connectAttr ":defaultColorMgtGlobals.wsn" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2.ws"
+		;
+connectAttr "place2dTexture7.c" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2.c"
+		;
+connectAttr "place2dTexture7.tf" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2.tf"
+		;
+connectAttr "place2dTexture7.rf" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2.rf"
+		;
+connectAttr "place2dTexture7.mu" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2.mu"
+		;
+connectAttr "place2dTexture7.mv" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2.mv"
+		;
+connectAttr "place2dTexture7.s" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2.s"
+		;
+connectAttr "place2dTexture7.wu" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2.wu"
+		;
+connectAttr "place2dTexture7.wv" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2.wv"
+		;
+connectAttr "place2dTexture7.re" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2.re"
+		;
+connectAttr "place2dTexture7.of" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2.of"
+		;
+connectAttr "place2dTexture7.r" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2.ro"
+		;
+connectAttr "place2dTexture7.n" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2.n"
+		;
+connectAttr "place2dTexture7.vt1" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2.vt1"
+		;
+connectAttr "place2dTexture7.vt2" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2.vt2"
+		;
+connectAttr "place2dTexture7.vt3" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2.vt3"
+		;
+connectAttr "place2dTexture7.vc1" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2.vc1"
+		;
+connectAttr "place2dTexture7.o" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2.uv"
+		;
+connectAttr "place2dTexture7.ofs" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2.fs"
+		;
+connectAttr ":defaultColorMgtGlobals.cme" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2.cme"
+		;
+connectAttr ":defaultColorMgtGlobals.cfe" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2.cmcf"
+		;
+connectAttr ":defaultColorMgtGlobals.cfp" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2.cmcp"
+		;
+connectAttr ":defaultColorMgtGlobals.wsn" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2.ws"
+		;
+connectAttr "place2dTexture8.c" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2.c"
+		;
+connectAttr "place2dTexture8.tf" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2.tf"
+		;
+connectAttr "place2dTexture8.rf" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2.rf"
+		;
+connectAttr "place2dTexture8.mu" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2.mu"
+		;
+connectAttr "place2dTexture8.mv" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2.mv"
+		;
+connectAttr "place2dTexture8.s" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2.s"
+		;
+connectAttr "place2dTexture8.wu" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2.wu"
+		;
+connectAttr "place2dTexture8.wv" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2.wv"
+		;
+connectAttr "place2dTexture8.re" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2.re"
+		;
+connectAttr "place2dTexture8.of" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2.of"
+		;
+connectAttr "place2dTexture8.r" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2.ro"
+		;
+connectAttr "place2dTexture8.n" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2.n"
+		;
+connectAttr "place2dTexture8.vt1" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2.vt1"
+		;
+connectAttr "place2dTexture8.vt2" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2.vt2"
+		;
+connectAttr "place2dTexture8.vt3" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2.vt3"
+		;
+connectAttr "place2dTexture8.vc1" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2.vc1"
+		;
+connectAttr "place2dTexture8.o" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2.uv"
+		;
+connectAttr "place2dTexture8.ofs" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2.fs"
+		;
+connectAttr ":defaultColorMgtGlobals.cme" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_2.cme"
+		;
+connectAttr ":defaultColorMgtGlobals.cfe" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_2.cmcf"
+		;
+connectAttr ":defaultColorMgtGlobals.cfp" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_2.cmcp"
+		;
+connectAttr ":defaultColorMgtGlobals.wsn" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_2.ws"
+		;
+connectAttr "place2dTexture9.c" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_2.c"
+		;
+connectAttr "place2dTexture9.tf" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_2.tf"
+		;
+connectAttr "place2dTexture9.rf" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_2.rf"
+		;
+connectAttr "place2dTexture9.mu" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_2.mu"
+		;
+connectAttr "place2dTexture9.mv" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_2.mv"
+		;
+connectAttr "place2dTexture9.s" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_2.s"
+		;
+connectAttr "place2dTexture9.wu" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_2.wu"
+		;
+connectAttr "place2dTexture9.wv" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_2.wv"
+		;
+connectAttr "place2dTexture9.re" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_2.re"
+		;
+connectAttr "place2dTexture9.of" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_2.of"
+		;
+connectAttr "place2dTexture9.r" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_2.ro"
+		;
+connectAttr "place2dTexture9.n" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_2.n"
+		;
+connectAttr "place2dTexture9.vt1" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_2.vt1"
+		;
+connectAttr "place2dTexture9.vt2" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_2.vt2"
+		;
+connectAttr "place2dTexture9.vt3" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_2.vt3"
+		;
+connectAttr "place2dTexture9.vc1" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_2.vc1"
+		;
+connectAttr "place2dTexture9.o" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_2.uv"
+		;
+connectAttr "place2dTexture9.ofs" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_2.fs"
+		;
+connectAttr ":defaultColorMgtGlobals.cme" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2.cme"
+		;
+connectAttr ":defaultColorMgtGlobals.cfe" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2.cmcf"
+		;
+connectAttr ":defaultColorMgtGlobals.cfp" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2.cmcp"
+		;
+connectAttr ":defaultColorMgtGlobals.wsn" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2.ws"
+		;
+connectAttr "place2dTexture10.c" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2.c"
+		;
+connectAttr "place2dTexture10.tf" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2.tf"
+		;
+connectAttr "place2dTexture10.rf" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2.rf"
+		;
+connectAttr "place2dTexture10.mu" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2.mu"
+		;
+connectAttr "place2dTexture10.mv" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2.mv"
+		;
+connectAttr "place2dTexture10.s" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2.s"
+		;
+connectAttr "place2dTexture10.wu" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2.wu"
+		;
+connectAttr "place2dTexture10.wv" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2.wv"
+		;
+connectAttr "place2dTexture10.re" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2.re"
+		;
+connectAttr "place2dTexture10.of" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2.of"
+		;
+connectAttr "place2dTexture10.r" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2.ro"
+		;
+connectAttr "place2dTexture10.n" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2.n"
+		;
+connectAttr "place2dTexture10.vt1" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2.vt1"
+		;
+connectAttr "place2dTexture10.vt2" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2.vt2"
+		;
+connectAttr "place2dTexture10.vt3" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2.vt3"
+		;
+connectAttr "place2dTexture10.vc1" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2.vc1"
+		;
+connectAttr "place2dTexture10.o" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2.uv"
+		;
+connectAttr "place2dTexture10.ofs" "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2.fs"
+		;
+connectAttr "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2.oc" "aiNormalMap1.input"
+		;
+connectAttr "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[0].dn"
+		;
+connectAttr "place2dTexture8.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[1].dn"
+		;
+connectAttr "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[2].dn"
+		;
+connectAttr "place2dTexture7.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[3].dn"
+		;
+connectAttr "place2dTexture6.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[4].dn"
+		;
+connectAttr "aiNormalMap1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[5].dn"
+		;
+connectAttr "place2dTexture9.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[6].dn"
+		;
+connectAttr "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[7].dn"
+		;
+connectAttr "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[8].dn"
+		;
+connectAttr "place2dTexture10.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[9].dn"
+		;
+connectAttr "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[10].dn"
+		;
+connectAttr "aiAreaLightShape2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[11].dn"
+		;
+connectAttr "openPBRSurface1SG.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[12].dn"
+		;
+connectAttr "Butcher_Knife_Mat.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[13].dn"
 		;
 connectAttr "openPBRSurface1SG.pa" ":renderPartition.st" -na;
 connectAttr "Butcher_Knife_Mat.msg" ":defaultShaderList1.s" -na;
+connectAttr "place2dTexture1.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture2.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture3.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture4.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture5.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture6.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture7.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture8.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture9.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture10.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "aiNormalMap1.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
+connectAttr "aiAreaLightShape1.ltd" ":lightList1.l" -na;
+connectAttr "aiAreaLightShape2.ltd" ":lightList1.l" -na;
+connectAttr "aiAreaLightShape3.ltd" ":lightList1.l" -na;
+connectAttr "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_1.msg" ":defaultTextureList1.tx"
+		 -na;
+connectAttr "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_1.msg" ":defaultTextureList1.tx"
+		 -na;
+connectAttr "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_1.msg" ":defaultTextureList1.tx"
+		 -na;
+connectAttr "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_1.msg" ":defaultTextureList1.tx"
+		 -na;
+connectAttr "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_1.msg" ":defaultTextureList1.tx"
+		 -na;
+connectAttr "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Normal_2.msg" ":defaultTextureList1.tx"
+		 -na;
+connectAttr "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Roughness_2.msg" ":defaultTextureList1.tx"
+		 -na;
+connectAttr "Butcher_Knife_totxt_001_Butcher_Knife_Mat_BaseColor_2.msg" ":defaultTextureList1.tx"
+		 -na;
+connectAttr "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Height_2.msg" ":defaultTextureList1.tx"
+		 -na;
+connectAttr "Butcher_Knife_totxt_001_Butcher_Knife_Mat_Metallic_2.msg" ":defaultTextureList1.tx"
+		 -na;
 connectAttr "pCubeShape1.iog" ":initialShadingGroup.dsm" -na;
 connectAttr "BladeShape1.iog.og[0]" ":initialShadingGroup.dsm" -na;
 connectAttr "BladeShape1.iog.og[1]" ":initialShadingGroup.dsm" -na;
@@ -9889,6 +10590,7 @@ connectAttr "polySurfaceShape1.iog.og[3]" ":initialShadingGroup.dsm" -na;
 connectAttr "polySurfaceShape1.iog.og[4]" ":initialShadingGroup.dsm" -na;
 connectAttr "polySurfaceShape1.iog.og[5]" ":initialShadingGroup.dsm" -na;
 connectAttr "polySurfaceShape1.ciog.cog[0]" ":initialShadingGroup.dsm" -na;
+connectAttr "pCubeShape2.iog" ":initialShadingGroup.dsm" -na;
 connectAttr "groupId6.msg" ":initialShadingGroup.gn" -na;
 connectAttr "groupId7.msg" ":initialShadingGroup.gn" -na;
 connectAttr "groupId8.msg" ":initialShadingGroup.gn" -na;
@@ -9900,4 +10602,7 @@ connectAttr "groupId13.msg" ":initialShadingGroup.gn" -na;
 connectAttr "groupId14.msg" ":initialShadingGroup.gn" -na;
 connectAttr "groupId15.msg" ":initialShadingGroup.gn" -na;
 connectAttr "groupId16.msg" ":initialShadingGroup.gn" -na;
+connectAttr "aiAreaLight1.iog" ":defaultLightSet.dsm" -na;
+connectAttr "aiAreaLight2.iog" ":defaultLightSet.dsm" -na;
+connectAttr "aiAreaLight3.iog" ":defaultLightSet.dsm" -na;
 // End of Butcher Knife.ma
