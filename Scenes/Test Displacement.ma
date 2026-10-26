@@ -1,6 +1,6 @@
 //Maya ASCII 2027 scene
 //Name: Test Displacement.ma
-//Last modified: Mon, Oct 19, 2026 11:09:33 AM
+//Last modified: Wed, Oct 21, 2026 10:23:53 AM
 //Codeset: 1252
 requires maya "2027";
 requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" -nodeType "aiAreaLight"
@@ -11,18 +11,18 @@ fileInfo "product" "Maya 2027";
 fileInfo "version" "2027";
 fileInfo "cutIdentifier" "202604221258-70da84b25e";
 fileInfo "osv" "Windows 11 Enterprise v2009 (Build: 26200)";
-fileInfo "UUID" "DE13F584-433E-CE9D-A92B-4FBD7C45E3B2";
+fileInfo "UUID" "877B9D99-4F3C-1944-732B-7F847E8E6FEC";
 fileInfo "license" "education";
 createNode transform -s -n "persp";
 	rename -uid "140AEC59-4F2C-2224-D0A2-DD9D331920E0";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 354.15947937096877 195.11558969132338 173.57587804279606 ;
-	setAttr ".r" -type "double3" -29.738352729606106 62.199999999999314 -3.4097832210047155e-15 ;
+	setAttr ".t" -type "double3" 522.14894721823794 309.30885324352005 249.18899687405838 ;
+	setAttr ".r" -type "double3" -29.73835272960692 63.799999999999393 1.0805818296695462e-14 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "F18A8912-419C-3EEA-31FE-4B8A9809A444";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 406.90194600354107;
+	setAttr ".coi" 625.33950385107005;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -105,39 +105,31 @@ createNode mesh -n "pPlaneShape1" -p "pPlane1";
 	setAttr ".ai_subdiv_type" 1;
 	setAttr ".ai_subdiv_iterations" 4;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "F26FC2F0-4E80-F411-EF5F-B49998087637";
-	setAttr -s 4 ".lnk";
-	setAttr -s 4 ".slnk";
+	rename -uid "BC00E3DA-4FDA-0DCD-6F38-A6A28D9E65BF";
+	setAttr -s 3 ".lnk";
+	setAttr -s 3 ".slnk";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "94521516-47FC-1E88-8E6B-3487E0CBA183";
+	rename -uid "95B1E6F4-4C1D-85D4-84D1-9492498EBAEC";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "6DE1D15A-43CC-45DA-D64F-E7A5AABF3CD5";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "41D1773E-467E-4DC9-57FB-92AAB331535C";
+	rename -uid "B618AFC3-4A21-036A-0651-FDBAFFB7F6CA";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "ED4E5E1C-43A1-8922-EFD9-759EB1D3BC2C";
 	setAttr ".g" yes;
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "D557F19B-4688-4C4E-0203-8B9375B10946";
+	rename -uid "8402D8AE-4F11-136B-0126-3EB3E465A02E";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "3315C677-43D6-9159-BD63-E0906F4286A9";
+	rename -uid "B243B001-4875-956C-CFDC-03BD0A5620FA";
 createNode openPBRSurface -n "Cone_Mat";
 	rename -uid "895BB2B9-4574-389C-DE43-ADAB6EEE7C26";
 createNode shadingEngine -n "openPBRSurface1SG";
 	rename -uid "636D6264-47EC-CC58-67B7-0DA8A8110F55";
 	setAttr ".ihi" 0;
-	setAttr -s 2 ".dsm";
 	setAttr ".ro" yes;
 createNode materialInfo -n "materialInfo1";
 	rename -uid "B08A7008-4420-244B-570E-FA854D86BDEF";
-createNode file -n "Carpet_Norm_Disp_1";
-	rename -uid "96586555-44DF-FA17-96BF-9C9BA4479976";
-	setAttr ".ail" yes;
-	setAttr ".ftn" -type "string" "C:/Users/11094931/Downloads/Carpet Norm Disp.png";
-	setAttr ".cs" -type "string" "sRGB Encoded Rec.709 (sRGB)";
-createNode place2dTexture -n "place2dTexture1";
-	rename -uid "ED513292-471F-4C1C-A379-D1A2E47E64F1";
 createNode displacementShader -n "displacementShader1";
 	rename -uid "F3B08BFD-4987-4545-3307-57A564100B2B";
 	setAttr ".scl" 0.05000000074505806;
@@ -145,7 +137,7 @@ createNode aiOptions -s -n "defaultArnoldRenderOptions";
 	rename -uid "8BC70DF5-4867-8E5C-E6C6-8A9C897E7858";
 	addAttr -ci true -sn "ARV_options" -ln "ARV_options" -dt "string";
 	setAttr ".version" -type "string" "5.6.1.1";
-	setAttr ".ARV_options" -type "string" "Test Resolution=100%;Color Management.Gamma=1;Color Management.Exposure=0;Background.BG=BG Color;Background.Color=0 0 0;Background.Image=;Background.Scale=1 1;Background.Offset=0 0;Background.Apply Color Management=1;Foreground.Enable FG=0;Foreground.Image=;Foreground.Scale=1 1;Foreground.Offset=0 0;Foreground.Apply Color Management=1;Interactive.FPS=16";
+	setAttr ".ARV_options" -type "string" "Test Resolution=100%;Color Management.Gamma=1;Color Management.Exposure=0;Background.BG=BG Color;Background.Color=0 0 0;Background.Image=;Background.Scale=1  1;Background.Offset=0  0;Background.Apply Color Management=1;Foreground.Enable FG=0;Foreground.Image=;Foreground.Scale=1  1;Foreground.Offset=0  0;Foreground.Apply Color Management=1;Interactive.FPS=16";
 createNode aiAOVFilter -s -n "defaultArnoldFilter";
 	rename -uid "C799475A-4161-9045-AEED-3E87125C783F";
 	setAttr ".ai_translator" -type "string" "gaussian";
@@ -188,7 +180,7 @@ createNode script -n "uiConfigurationScriptNode";
 		+ "        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            -pluginObjects \"mayaUsdProxyShapeBaseDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"ToggledOutliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"ToggledOutliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n            -showReferenceNodes 1\n            -showReferenceMembers 1\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n            -showDagOnly 1\n"
 		+ "            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showParentContainers 0\n            -showContainerContents 1\n            -ignoreDagHierarchy 0\n            -expandConnections 0\n            -showUpstreamCurves 1\n            -showUnitlessCurves 1\n            -showCompounds 1\n            -showLeafs 1\n            -showNumericAttrsOnly 0\n            -highlightActive 1\n            -autoSelectNewObjects 0\n            -doNotSelectNewObjects 0\n            -dropIsParent 1\n            -transmitFilters 0\n            -setFilter \"defaultSetFilter\" \n            -showSetMembers 1\n            -allowMultiSelection 1\n            -alwaysToggleSelect 0\n            -directSelect 0\n            -isSet 0\n            -isSetMember 0\n            -showUfeItems 1\n            -displayMode \"DAG\" \n            -expandObjects 0\n            -setsIgnoreFilters 1\n            -containersIgnoreFilters 0\n            -editAttrName 0\n            -showAttrValues 0\n            -highlightSecondary 0\n"
 		+ "            -showUVAttrsOnly 0\n            -showTextureNodesOnly 0\n            -attrAlphaOrder \"default\" \n            -animLayerFilterOptions \"allAffecting\" \n            -sortOrder \"none\" \n            -longNames 0\n            -niceNames 1\n            -showNamespace 1\n            -showPinIcons 0\n            -mapMotionTrails 0\n            -ignoreHiddenAttribute 0\n            -ignoreOutlinerColor 0\n            -renderFilterVisible 0\n            -renderFilterIndex 0\n            -selectionOrder \"chronological\" \n            -expandAttribute 0\n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"Outliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"Outliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n"
-		+ "            -showReferenceNodes 0\n            -showReferenceMembers 0\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n            -showDagOnly 1\n            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showParentContainers 0\n            -showContainerContents 1\n            -ignoreDagHierarchy 0\n            -expandConnections 0\n            -showUpstreamCurves 1\n            -showUnitlessCurves 1\n            -showCompounds 1\n            -showLeafs 1\n            -showNumericAttrsOnly 0\n            -highlightActive 1\n            -autoSelectNewObjects 0\n            -doNotSelectNewObjects 0\n            -dropIsParent 1\n            -transmitFilters 0\n            -setFilter \"0\" \n            -showSetMembers 1\n            -allowMultiSelection 1\n"
+		+ "            -showReferenceNodes 0\n            -showReferenceMembers 0\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n            -showDagOnly 1\n            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showParentContainers 0\n            -showContainerContents 1\n            -ignoreDagHierarchy 0\n            -expandConnections 0\n            -showUpstreamCurves 1\n            -showUnitlessCurves 1\n            -showCompounds 1\n            -showLeafs 1\n            -showNumericAttrsOnly 0\n            -highlightActive 1\n            -autoSelectNewObjects 0\n            -doNotSelectNewObjects 0\n            -dropIsParent 1\n            -transmitFilters 0\n            -setFilter \"defaultSetFilter\" \n            -showSetMembers 1\n            -allowMultiSelection 1\n"
 		+ "            -alwaysToggleSelect 0\n            -directSelect 0\n            -showUfeItems 1\n            -displayMode \"DAG\" \n            -expandObjects 0\n            -setsIgnoreFilters 1\n            -containersIgnoreFilters 0\n            -editAttrName 0\n            -showAttrValues 0\n            -highlightSecondary 0\n            -showUVAttrsOnly 0\n            -showTextureNodesOnly 0\n            -attrAlphaOrder \"default\" \n            -animLayerFilterOptions \"allAffecting\" \n            -sortOrder \"none\" \n            -longNames 0\n            -niceNames 1\n            -showNamespace 1\n            -showPinIcons 0\n            -mapMotionTrails 0\n            -ignoreHiddenAttribute 0\n            -ignoreOutlinerColor 0\n            -renderFilterVisible 0\n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"graphEditor\" (localizedPanelLabel(\"Graph Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Graph Editor\")) -mbv $menusOkayInPanels  $panelName;\n"
 		+ "\n\t\t\t$editorName = ($panelName+\"OutlineEd\");\n            outlinerEditor -e \n                -showShapes 1\n                -showAssignedMaterials 0\n                -showTimeEditor 1\n                -showReferenceNodes 0\n                -showReferenceMembers 0\n                -showAttributes 1\n                -showConnected 1\n                -showAnimCurvesOnly 1\n                -showMuteInfo 0\n                -organizeByLayer 1\n                -organizeByClip 1\n                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 1\n                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n                -showParentContainers 0\n                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n                -showUpstreamCurves 1\n                -showUnitlessCurves 1\n                -showCompounds 0\n                -showLeafs 1\n                -showNumericAttrsOnly 1\n"
 		+ "                -highlightActive 0\n                -autoSelectNewObjects 1\n                -doNotSelectNewObjects 0\n                -dropIsParent 1\n                -transmitFilters 1\n                -setFilter \"0\" \n                -showSetMembers 0\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -showUfeItems 1\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 1\n                -mapMotionTrails 1\n                -ignoreHiddenAttribute 0\n"
@@ -216,29 +208,37 @@ createNode script -n "sceneConfigurationScriptNode";
 	rename -uid "B47F0669-4EDF-2B46-7FF8-AB8CD50C18FE";
 	setAttr ".b" -type "string" "playbackOptions -min 1 -max 120 -ast 1 -aet 200 ";
 	setAttr ".st" 6;
+createNode file -n "carpet_dis_1";
+	rename -uid "D71939D6-4002-6FFE-1BF4-8CA2BEAE834E";
+	setAttr ".ail" yes;
+	setAttr ".ftn" -type "string" "C:/Users/11094931/Downloads/carpet dis.jpg";
+	setAttr ".cs" -type "string" "sRGB Encoded Rec.709 (sRGB)";
+	setAttr ".ai_mipmap_bias" 1;
+createNode place2dTexture -n "place2dTexture2";
+	rename -uid "E3A138EF-4E7E-3E75-F559-B8B3BE5B7BEE";
 createNode nodeGraphEditorInfo -n "hyperShadePrimaryNodeEditorSavedTabsInfo";
-	rename -uid "E7EF74F2-48BD-30FE-71F8-9DB7F2D73B43";
+	rename -uid "B70DCF20-4E84-0BB4-9644-158DA0E314E6";
 	setAttr ".tgi[0].tn" -type "string" "Untitled_1";
-	setAttr ".tgi[0].vl" -type "double2" -800.72385397519679 -1345.0526626144522 ;
-	setAttr ".tgi[0].vh" -type "double2" 1379.276146024803 63.518765956976168 ;
+	setAttr ".tgi[0].vl" -type "double2" -1314.8511093515044 -988.91967591045488 ;
+	setAttr ".tgi[0].vh" -type "double2" 678.31879366660905 136.48520541014179 ;
 	setAttr -s 6 ".tgi[0].ni";
-	setAttr ".tgi[0].ni[0].x" -484.40060424804688;
-	setAttr ".tgi[0].ni[0].y" -219.45010375976562;
+	setAttr ".tgi[0].ni[0].x" 503.5714111328125;
+	setAttr ".tgi[0].ni[0].y" -180.95237731933594;
 	setAttr ".tgi[0].ni[0].nvs" 1923;
-	setAttr ".tgi[0].ni[1].x" -262.9720458984375;
-	setAttr ".tgi[0].ni[1].y" -219.45010375976562;
+	setAttr ".tgi[0].ni[1].x" -28.352657318115234;
+	setAttr ".tgi[0].ni[1].y" -198.96566772460938;
 	setAttr ".tgi[0].ni[1].nvs" 1923;
-	setAttr ".tgi[0].ni[2].x" -28.352657318115234;
-	setAttr ".tgi[0].ni[2].y" -198.96566772460938;
-	setAttr ".tgi[0].ni[2].nvs" 1923;
-	setAttr ".tgi[0].ni[3].x" 277.85711669921875;
-	setAttr ".tgi[0].ni[3].y" -180.95237731933594;
-	setAttr ".tgi[0].ni[3].nvs" 1971;
-	setAttr ".tgi[0].ni[4].x" 503.5714111328125;
-	setAttr ".tgi[0].ni[4].y" -180.95237731933594;
+	setAttr ".tgi[0].ni[2].x" 277.85711669921875;
+	setAttr ".tgi[0].ni[2].y" -180.95237731933594;
+	setAttr ".tgi[0].ni[2].nvs" 1971;
+	setAttr ".tgi[0].ni[3].x" 198.57142639160156;
+	setAttr ".tgi[0].ni[3].y" -1000;
+	setAttr ".tgi[0].ni[3].nvs" 1923;
+	setAttr ".tgi[0].ni[4].x" -499.25802612304688;
+	setAttr ".tgi[0].ni[4].y" -192.85247802734375;
 	setAttr ".tgi[0].ni[4].nvs" 1923;
-	setAttr ".tgi[0].ni[5].x" 198.57142639160156;
-	setAttr ".tgi[0].ni[5].y" -1000;
+	setAttr ".tgi[0].ni[5].x" -277.8294677734375;
+	setAttr ".tgi[0].ni[5].y" -192.85247802734375;
 	setAttr ".tgi[0].ni[5].nvs" 1923;
 select -ne :time1;
 	setAttr ".o" 1;
@@ -307,29 +307,7 @@ connectAttr "pPlaneShape1.iog" "openPBRSurface1SG.dsm" -na;
 connectAttr "displacementShader1.d" "openPBRSurface1SG.ds";
 connectAttr "openPBRSurface1SG.msg" "materialInfo1.sg";
 connectAttr "Cone_Mat.msg" "materialInfo1.m";
-connectAttr ":defaultColorMgtGlobals.cme" "Carpet_Norm_Disp_1.cme";
-connectAttr ":defaultColorMgtGlobals.cfe" "Carpet_Norm_Disp_1.cmcf";
-connectAttr ":defaultColorMgtGlobals.cfp" "Carpet_Norm_Disp_1.cmcp";
-connectAttr ":defaultColorMgtGlobals.wsn" "Carpet_Norm_Disp_1.ws";
-connectAttr "place2dTexture1.c" "Carpet_Norm_Disp_1.c";
-connectAttr "place2dTexture1.tf" "Carpet_Norm_Disp_1.tf";
-connectAttr "place2dTexture1.rf" "Carpet_Norm_Disp_1.rf";
-connectAttr "place2dTexture1.mu" "Carpet_Norm_Disp_1.mu";
-connectAttr "place2dTexture1.mv" "Carpet_Norm_Disp_1.mv";
-connectAttr "place2dTexture1.s" "Carpet_Norm_Disp_1.s";
-connectAttr "place2dTexture1.wu" "Carpet_Norm_Disp_1.wu";
-connectAttr "place2dTexture1.wv" "Carpet_Norm_Disp_1.wv";
-connectAttr "place2dTexture1.re" "Carpet_Norm_Disp_1.re";
-connectAttr "place2dTexture1.of" "Carpet_Norm_Disp_1.of";
-connectAttr "place2dTexture1.r" "Carpet_Norm_Disp_1.ro";
-connectAttr "place2dTexture1.n" "Carpet_Norm_Disp_1.n";
-connectAttr "place2dTexture1.vt1" "Carpet_Norm_Disp_1.vt1";
-connectAttr "place2dTexture1.vt2" "Carpet_Norm_Disp_1.vt2";
-connectAttr "place2dTexture1.vt3" "Carpet_Norm_Disp_1.vt3";
-connectAttr "place2dTexture1.vc1" "Carpet_Norm_Disp_1.vc1";
-connectAttr "place2dTexture1.o" "Carpet_Norm_Disp_1.uv";
-connectAttr "place2dTexture1.ofs" "Carpet_Norm_Disp_1.fs";
-connectAttr "Carpet_Norm_Disp_1.oa" "displacementShader1.d";
+connectAttr "carpet_dis_1.oa" "displacementShader1.d";
 connectAttr ":defaultArnoldDenoiser.msg" ":defaultArnoldRenderOptions.imagers" -na
 		;
 connectAttr ":defaultArnoldDisplayDriver.msg" ":defaultArnoldRenderOptions.drivers"
@@ -337,24 +315,46 @@ connectAttr ":defaultArnoldDisplayDriver.msg" ":defaultArnoldRenderOptions.drive
 connectAttr ":defaultArnoldFilter.msg" ":defaultArnoldRenderOptions.filt";
 connectAttr ":defaultArnoldDriver.msg" ":defaultArnoldRenderOptions.drvr";
 connectAttr "polyPlane1.out" "polyTweakUV1.ip";
-connectAttr "place2dTexture1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[0].dn"
+connectAttr ":defaultColorMgtGlobals.cme" "carpet_dis_1.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "carpet_dis_1.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "carpet_dis_1.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "carpet_dis_1.ws";
+connectAttr "place2dTexture2.c" "carpet_dis_1.c";
+connectAttr "place2dTexture2.tf" "carpet_dis_1.tf";
+connectAttr "place2dTexture2.rf" "carpet_dis_1.rf";
+connectAttr "place2dTexture2.mu" "carpet_dis_1.mu";
+connectAttr "place2dTexture2.mv" "carpet_dis_1.mv";
+connectAttr "place2dTexture2.s" "carpet_dis_1.s";
+connectAttr "place2dTexture2.wu" "carpet_dis_1.wu";
+connectAttr "place2dTexture2.wv" "carpet_dis_1.wv";
+connectAttr "place2dTexture2.re" "carpet_dis_1.re";
+connectAttr "place2dTexture2.of" "carpet_dis_1.of";
+connectAttr "place2dTexture2.r" "carpet_dis_1.ro";
+connectAttr "place2dTexture2.n" "carpet_dis_1.n";
+connectAttr "place2dTexture2.vt1" "carpet_dis_1.vt1";
+connectAttr "place2dTexture2.vt2" "carpet_dis_1.vt2";
+connectAttr "place2dTexture2.vt3" "carpet_dis_1.vt3";
+connectAttr "place2dTexture2.vc1" "carpet_dis_1.vc1";
+connectAttr "place2dTexture2.o" "carpet_dis_1.uv";
+connectAttr "place2dTexture2.ofs" "carpet_dis_1.fs";
+connectAttr "openPBRSurface1SG.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[0].dn"
 		;
-connectAttr "Carpet_Norm_Disp_1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[1].dn"
+connectAttr "displacementShader1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[1].dn"
 		;
-connectAttr "displacementShader1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[2].dn"
+connectAttr "Cone_Mat.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[2].dn"
 		;
-connectAttr "Cone_Mat.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[3].dn"
+connectAttr "aiAreaLightShape1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[3].dn"
 		;
-connectAttr "openPBRSurface1SG.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[4].dn"
+connectAttr "place2dTexture2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[4].dn"
 		;
-connectAttr "aiAreaLightShape1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[5].dn"
+connectAttr "carpet_dis_1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[5].dn"
 		;
 connectAttr "openPBRSurface1SG.pa" ":renderPartition.st" -na;
 connectAttr "Cone_Mat.msg" ":defaultShaderList1.s" -na;
 connectAttr "displacementShader1.msg" ":defaultShaderList1.s" -na;
-connectAttr "place2dTexture1.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture2.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
 connectAttr "aiAreaLightShape1.ltd" ":lightList1.l" -na;
-connectAttr "Carpet_Norm_Disp_1.msg" ":defaultTextureList1.tx" -na;
+connectAttr "carpet_dis_1.msg" ":defaultTextureList1.tx" -na;
 connectAttr "aiAreaLight1.iog" ":defaultLightSet.dsm" -na;
 // End of Test Displacement.ma
